@@ -12,11 +12,8 @@ namespace GLDiary
     {
         private SQLiteConnection sqlConnection;
         private SQLiteCommand sqlCommand;
-        private SQLiteDataAdapter database;
         private DataSet DataSet = new DataSet();
         private DataTable dataTable = new DataTable();
-        private string _table;
-        private string _day;
 
         public DataTable DataTable
         {
@@ -27,14 +24,13 @@ namespace GLDiary
         public void SetConnection()
         {
             sqlConnection =
-                new SQLiteConnection("Data Source = database.sqlite3; Version = 3; New = False; Compress = True");
+                new SQLiteConnection("DataSource = database.sqlite3; Version = 3; New = True; Compress = True");
         }
-
 
         public void LoadData(string table, params string[] _params)
         {
+            SetConnection();
             sqlConnection.Open();
-
             sqlCommand = sqlConnection.CreateCommand();
             
             var CommandText = "SELECT ";
@@ -86,52 +82,64 @@ namespace GLDiary
         }
 
 
-        public void UpdateData(string table, int ID, params string[] _params)
+        public void UpdateStudents(string table, int ID, params string[] _params)
         {
             SetConnection();
             sqlConnection.Open();
             
-            var CommandText = $"UPDATE {table} SET ";
+            var CommandText = $"UPDATE \"{table}\" SET ";
             var _count = _params.Length;
-            for (var i = 0; i < _count; i += 2) CommandText += $"{_params[i]} = \"{_params[i + 1]}\"" + ", ";
+            for (var i = 0; i < _count; i += 2) CommandText += $"\"{_params[i]}\" = \"{_params[i + 1]}\"" + ", ";
             CommandText = CommandText.Trim().Trim(',');
-            CommandText += $" WHERE ID = {ID}";
+            CommandText += $" WHERE ID = \"{ID}\"";
             
             var sqlCommand = new SQLiteCommand(CommandText, sqlConnection);
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
-        public void SelectDay(string table)
-        {
-            SetConnection();
-            sqlConnection.Open();
-
-            var CommandText = $"ALTER TABLE {table} ";
-
-            var sqlCommand = new SQLiteCommand(CommandText, sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-            sqlConnection.Close();
-        }
-
-        
-
-        //Form5 виведення в датагріди розкладу, Form3
-        //public void SheduleOfDay(string day)
+        //public void UpdateData(string table,  params string[] _params)
         //{
         //    SetConnection();
         //    sqlConnection.Open();
 
-        //    sqlCommand = sqlConnection.CreateCommand();
-        //    var CommandText = $"SELECT Pair, Subject FROM SheduleOfPairs WHERE  DayOfWeek =  \"{day}\"";
-        //    var database = new SQLiteDataAdapter(CommandText, sqlConnection);
-        //    DataSet.Reset();
-        //    database.Fill(DataSet);
-        //    DataTable = DataSet.Tables[0];
+        //    var CommandText = $"UPDATE {table} SET ";
+        //    var _count = _params.Length;
+        //    for (var i = 0; i < _count; i += 2) CommandText += $"{_params[i]} = \"{_params[i + 1]}\"" + ", ";
+        //    CommandText = CommandText.Trim().Trim(',');
+        //    CommandText += $" WHERE ID = {ID}";
+
+        //    var sqlCommand = new SQLiteCommand(CommandText, sqlConnection);
+        //    sqlCommand.ExecuteNonQuery();
+        //    sqlConnection.Close();
         //}
 
-        //public void SetDate(string date)
-        //{
-        //    ExecuteQuery($"ALTER TABLE \"{_table}\" ADD COLUMN \"{date}\"");
-        //}
+        public void SelectDay(string table, string date)
+        {
+            SetConnection();
+            sqlConnection.Open();
+
+            var CommandText = $"ALTER TABLE \"{table}\" ADD \"{date}\"";
+
+            var sqlCommand = new SQLiteCommand(CommandText, sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        //Form5 виведення в датагріди розкладу, Form3
+        public void SheduleOfDay(string day)
+        {
+            SetConnection();
+            sqlConnection.Open();
+            sqlCommand = sqlConnection.CreateCommand();
+
+            var CommandText = $"SELECT Pair, Subject FROM SheduleOfPairs WHERE  DayOfWeek =  \"{day}\"";
+
+            var database = new SQLiteDataAdapter(CommandText, sqlConnection);
+            DataSet.Reset();
+            database.Fill(DataSet);
+            DataTable = DataSet.Tables[0];
+            sqlConnection.Close();
+        }
+
     }
 }

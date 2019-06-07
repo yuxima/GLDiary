@@ -35,14 +35,14 @@ namespace GLDiary
         private void button1_Click_1(object sender, EventArgs e)
         {
             Hide();
-            var form4 = new SheduleOfPairsForm();
+            var form4 = new SheduleOfCallsForm();
             form4.Show();
         }
 
         private void buttonPairsShedule_Click(object sender, EventArgs e)
         {
             Hide();
-            var form5 = new ShedulrOfPairsForm();
+            var form5 = new SheduleOfPairsForm();
             form5.Show();
         }
 
@@ -52,6 +52,20 @@ namespace GLDiary
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
+        }
+
+        private void buttonInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Click a button 'Check visiting' to mark absent students. A button 'Information about students' is used to change student`s personal data.");
+
+
+        }
+
+        private void buttonViewVisiting_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form6 = new ViewVisitingForm();
+            form6.Show();
         }
     }
 }

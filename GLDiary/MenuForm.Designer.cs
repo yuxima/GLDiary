@@ -36,6 +36,8 @@
             this.buttonPairsShedule = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonInfo = new System.Windows.Forms.Button();
+            this.buttonViewVisiting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,6 +121,35 @@
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // buttonInfo
+            // 
+            this.buttonInfo.BackColor = System.Drawing.Color.Transparent;
+            this.buttonInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonInfo.BackgroundImage")));
+            this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonInfo.ForeColor = System.Drawing.Color.Black;
+            this.buttonInfo.Location = new System.Drawing.Point(750, 12);
+            this.buttonInfo.Name = "buttonInfo";
+            this.buttonInfo.Size = new System.Drawing.Size(38, 35);
+            this.buttonInfo.TabIndex = 5;
+            this.buttonInfo.UseVisualStyleBackColor = false;
+            this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
+            // 
+            // buttonViewVisiting
+            // 
+            this.buttonViewVisiting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonViewVisiting.AutoSize = true;
+            this.buttonViewVisiting.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonViewVisiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewVisiting.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonViewVisiting.Location = new System.Drawing.Point(334, 340);
+            this.buttonViewVisiting.Name = "buttonViewVisiting";
+            this.buttonViewVisiting.Size = new System.Drawing.Size(149, 42);
+            this.buttonViewVisiting.TabIndex = 6;
+            this.buttonViewVisiting.Text = "View visiting";
+            this.buttonViewVisiting.UseVisualStyleBackColor = false;
+            this.buttonViewVisiting.Click += new System.EventHandler(this.buttonViewVisiting_Click);
+            // 
             // MenuForm
             // 
             this.AllowDrop = true;
@@ -129,6 +160,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonViewVisiting);
+            this.Controls.Add(this.buttonInfo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonPairsShedule);
             this.Controls.Add(this.buttonSheduleOfCalls);
@@ -155,6 +188,8 @@
         private System.Windows.Forms.Button buttonPairsShedule;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button buttonInfo;
+        private System.Windows.Forms.Button buttonViewVisiting;
     }
 }
 

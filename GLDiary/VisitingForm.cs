@@ -12,16 +12,15 @@ namespace GLDiary
 {
     public partial class VisitingForm : Form
     {
-        private Database database;
-        private Database databaseMath;
-        private DateTime date;
-        private Database subject;
+        private Database database = new Database();
+        private DateTime selectedDate;
+        private Database subject = new Database();
 
         public VisitingForm()
         {
             InitializeComponent();
-            //database = new Database("Students");
-            //database.LoadStudents();
+            database = new Database();
+            database.LoadData("Students","ID","Name");
         }
 
         private void buttonQuitToMenu_Click(object sender, EventArgs e)
@@ -43,28 +42,35 @@ namespace GLDiary
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            var absent = new List<int>();
-            DataGridViewCheckBoxCell oCell;
+            Dictionary<int, int> absent = new Dictionary<int, int>();
+            DataGridViewCheckBoxCell oCell = new DataGridViewCheckBoxCell();
             foreach (DataGridViewRow row in dataGridViewVisiting.Rows)
             {
                 oCell = row.Cells[2] as DataGridViewCheckBoxCell;
                 var bChecked = null != oCell && null != oCell.Value && true == (bool) oCell.Value;
-                if (true == bChecked) absent.Add(Convert.ToInt32(row.Cells[0].Value));
-            }
+                if (true == bChecked) absent.Add(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[2].Value));
 
-            subject.SheduleOfDay(date.DayOfWeek.ToString());
+            }
+            foreach (KeyValuePair<int,int> student in absent) 
+            {
+                database.SelectDay(comboBoxSelectPair.SelectedValue.ToString(), selectedDate.Date.ToString());
+                database.UpdateStudents(comboBoxSelectPair.SelectedValue.ToString(), student.Key, selectedDate.Date.ToString(), student.Value.ToString());
+            }
+            MessageBox.Show("OK");
+  
         }
 
         public void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            //subject = new Database("SheduleOfPairs");
-            //date = monthCalendar1.SelectionEnd;
-            //List<string> pairs = new List<string>();
-            //foreach (var row in subject.DataTable.Select())
-            //{
-            //    pairs.Add(row.ItemArray[1].ToString());
-            //}
-            //comboBox1.DataSource = pairs;
+            
+            selectedDate = monthCalendar.SelectionEnd;
+            subject.SheduleOfDay(selectedDate.DayOfWeek.ToString());
+            List<string> pairs = new List<string>();
+            foreach (var row in subject.DataTable.Select())
+            {
+                pairs.Add(row.ItemArray[1].ToString());
+            }
+            comboBoxSelectPair.DataSource = pairs;
         }
     }
 }

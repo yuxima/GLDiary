@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsInfoForm));
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.labelName = new System.Windows.Forms.Label();
@@ -41,22 +42,35 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.buttonQuitToMenu = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewStudents
             // 
+            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewStudents.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewStudents.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStudents.Location = new System.Drawing.Point(12, 12);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStudents.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewStudents.Location = new System.Drawing.Point(39, 12);
             this.dataGridViewStudents.Name = "dataGridViewStudents";
-            this.dataGridViewStudents.Size = new System.Drawing.Size(662, 347);
+            this.dataGridViewStudents.Size = new System.Drawing.Size(384, 320);
             this.dataGridViewStudents.TabIndex = 0;
             this.dataGridViewStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellClick);
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(155, 376);
+            this.labelName.BackColor = System.Drawing.Color.Transparent;
+            this.labelName.Location = new System.Drawing.Point(470, 58);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(35, 13);
             this.labelName.TabIndex = 2;
@@ -65,7 +79,8 @@
             // labelBirthDate
             // 
             this.labelBirthDate.AutoSize = true;
-            this.labelBirthDate.Location = new System.Drawing.Point(302, 376);
+            this.labelBirthDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelBirthDate.Location = new System.Drawing.Point(453, 95);
             this.labelBirthDate.Name = "labelBirthDate";
             this.labelBirthDate.Size = new System.Drawing.Size(52, 13);
             this.labelBirthDate.TabIndex = 3;
@@ -74,7 +89,8 @@
             // labelPhoneNumber
             // 
             this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(466, 376);
+            this.labelPhoneNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelPhoneNumber.Location = new System.Drawing.Point(429, 133);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
             this.labelPhoneNumber.Size = new System.Drawing.Size(76, 13);
             this.labelPhoneNumber.TabIndex = 4;
@@ -82,28 +98,35 @@
             // 
             // textBoxBirthDate
             // 
-            this.textBoxBirthDate.Location = new System.Drawing.Point(360, 373);
+            this.textBoxBirthDate.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.textBoxBirthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxBirthDate.Location = new System.Drawing.Point(520, 92);
             this.textBoxBirthDate.Name = "textBoxBirthDate";
             this.textBoxBirthDate.Size = new System.Drawing.Size(100, 20);
             this.textBoxBirthDate.TabIndex = 6;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(196, 373);
+            this.textBoxName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxName.Location = new System.Drawing.Point(520, 55);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 7;
             // 
             // textBoxPhoneNumber
             // 
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(548, 373);
+            this.textBoxPhoneNumber.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.textBoxPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(520, 126);
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
             this.textBoxPhoneNumber.TabIndex = 8;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(114, 399);
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Location = new System.Drawing.Point(490, 173);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 9;
@@ -113,7 +136,8 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(291, 399);
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.Location = new System.Drawing.Point(490, 213);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
             this.buttonEdit.TabIndex = 10;
@@ -123,7 +147,8 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(469, 399);
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Location = new System.Drawing.Point(490, 253);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 11;
@@ -133,27 +158,45 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(49, 373);
+            this.textBoxID.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxID.Location = new System.Drawing.Point(520, 21);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 12;
             // 
             // buttonQuitToMenu
             // 
-            this.buttonQuitToMenu.Location = new System.Drawing.Point(1, 2);
+            this.buttonQuitToMenu.BackColor = System.Drawing.Color.Transparent;
+            this.buttonQuitToMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuitToMenu.BackgroundImage")));
+            this.buttonQuitToMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonQuitToMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonQuitToMenu.Location = new System.Drawing.Point(3, 3);
             this.buttonQuitToMenu.Name = "buttonQuitToMenu";
-            this.buttonQuitToMenu.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuitToMenu.Size = new System.Drawing.Size(30, 30);
             this.buttonQuitToMenu.TabIndex = 13;
-            this.buttonQuitToMenu.Text = "Exit";
-            this.buttonQuitToMenu.UseVisualStyleBackColor = true;
+            this.buttonQuitToMenu.UseVisualStyleBackColor = false;
             this.buttonQuitToMenu.Click += new System.EventHandler(this.buttonQuitToMenu_Click);
             // 
-            // Form2
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(487, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "ID";
+            // 
+            // StudentsInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(697, 434);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(647, 347);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonQuitToMenu);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.buttonDelete);
@@ -167,8 +210,8 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.dataGridViewStudents);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "StudentsInfoForm";
+            this.Text = "GLDiary - Information";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
             this.ResumeLayout(false);
@@ -190,5 +233,6 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Button buttonQuitToMenu;
+        private System.Windows.Forms.Label label1;
     }
 }

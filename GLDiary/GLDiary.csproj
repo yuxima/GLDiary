@@ -117,23 +117,29 @@
     <Compile Include="StudentsInfoForm.Designer.cs">
       <DependentUpon>StudentsInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewVisitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewVisitingForm.Designer.cs">
+      <DependentUpon>ViewVisitingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VisitingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VisitingForm.Designer.cs">
       <DependentUpon>VisitingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SheduleOfCallsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SheduleOfCallsForm.Designer.cs">
+      <DependentUpon>SheduleOfCallsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SheduleOfPairsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SheduleOfPairsForm.Designer.cs">
       <DependentUpon>SheduleOfPairsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ShedulrOfPairsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShedulrOfPairsForm.Designer.cs">
-      <DependentUpon>ShedulrOfPairsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,14 +149,17 @@
     <EmbeddedResource Include="StudentsInfoForm.resx">
       <DependentUpon>StudentsInfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewVisitingForm.resx">
+      <DependentUpon>ViewVisitingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VisitingForm.resx">
       <DependentUpon>VisitingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SheduleOfCallsForm.resx">
+      <DependentUpon>SheduleOfCallsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SheduleOfPairsForm.resx">
       <DependentUpon>SheduleOfPairsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShedulrOfPairsForm.resx">
-      <DependentUpon>ShedulrOfPairsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

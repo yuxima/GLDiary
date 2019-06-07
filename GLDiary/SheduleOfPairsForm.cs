@@ -13,10 +13,28 @@ namespace GLDiary
 {
     public partial class SheduleOfPairsForm : Form
     {
+        private Database databaseMonday;
+        private Database databaseTuesday;
+        private Database databaseWednesday;
+        private Database databaseThursday;
+        private Database databaseFriday;
+
+
         public SheduleOfPairsForm()
         {
             InitializeComponent();
-            LoadData();
+            databaseMonday = new Database();
+            databaseTuesday = new Database();
+            databaseWednesday = new Database();
+            databaseThursday = new Database();
+            databaseFriday = new Database();
+            
+            databaseMonday.SheduleOfDay("Monday");
+            databaseTuesday.SheduleOfDay("Tuesday");
+            databaseWednesday.SheduleOfDay("Wednesday");
+            databaseThursday.SheduleOfDay("Thursday");
+            databaseFriday.SheduleOfDay("Friday");
+
         }
 
         private void buttonQuitToMenu_Click(object sender, EventArgs e)
@@ -26,40 +44,13 @@ namespace GLDiary
             form1.Show();
         }
 
-        private SQLiteConnection sqlConnection;
-        private SQLiteCommand sqlCommand;
-        private SQLiteDataAdapter database;
-        private DataSet DataSet = new DataSet();
-        private DataTable DataTable = new DataTable();
-
-        private void SetConnection()
+        private void Form5_Load(object sender, EventArgs e)
         {
-            sqlConnection =
-                new SQLiteConnection("Data Source = database.sqlite3; Version = 3; New = False; Compress = True");
-        }
-
-        private void ExecuteQuery(string txtQuery)
-        {
-            SetConnection();
-            sqlConnection.Open();
-            sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = txtQuery;
-            sqlCommand.ExecuteNonQuery();
-            sqlConnection.Close();
-        }
-
-        private void LoadData()
-        {
-            SetConnection();
-            sqlConnection.Open();
-            sqlCommand = sqlConnection.CreateCommand();
-            var CommandText = "SELECT * FROM SheduleOfCalls";
-            database = new SQLiteDataAdapter(CommandText, sqlConnection);
-            DataSet.Reset();
-            database.Fill(DataSet);
-            DataTable = DataSet.Tables[0];
-            dataGridViewSheduleOfCalls.DataSource = DataTable;
-            sqlConnection.Close();
+            dataGridViewSheduleOfMonday.DataSource = databaseMonday.DataTable;
+            dataGridViewSheduleOfTuesday.DataSource = databaseTuesday.DataTable;
+            dataGridViewSheduleOfWednesday.DataSource = databaseWednesday.DataTable;
+            dataGridViewSheduleOfThursday.DataSource = databaseThursday.DataTable;
+            dataGridViewSheduleOfFriday.DataSource = databaseFriday.DataTable;
         }
     }
 }

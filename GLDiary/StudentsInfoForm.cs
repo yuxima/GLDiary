@@ -47,7 +47,7 @@ namespace GLDiary
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            database.UpdateData("Students", Convert.ToInt32(textBoxID.Text), "Name", textBoxName.Text, "BirthDate",
+            database.UpdateStudents("Students", Convert.ToInt32(textBoxID.Text), "Name", textBoxName.Text, "BirthDate",
                 textBoxBirthDate.Text, "PhoneNumber", textBoxPhoneNumber.Text);
             database.LoadData("Students", "*");
             dataGridViewStudents.DataSource = database.DataTable;
