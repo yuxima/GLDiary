@@ -23,6 +23,7 @@ namespace GLDiary
         public SheduleOfPairsForm()
         {
             InitializeComponent();
+
             databaseMonday = new Database();
             databaseTuesday = new Database();
             databaseWednesday = new Database();
@@ -35,6 +36,11 @@ namespace GLDiary
             databaseThursday.SheduleOfDay("Thursday");
             databaseFriday.SheduleOfDay("Friday");
 
+            dataGridViewSheduleOfMonday.ReadOnly = true;
+            dataGridViewSheduleOfTuesday.ReadOnly = true;
+            dataGridViewSheduleOfWednesday.ReadOnly = true;
+            dataGridViewSheduleOfThursday.ReadOnly = true;
+            dataGridViewSheduleOfFriday.ReadOnly = true;
         }
 
         private void buttonQuitToMenu_Click(object sender, EventArgs e)

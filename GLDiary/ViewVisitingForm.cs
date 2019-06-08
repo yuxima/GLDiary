@@ -29,5 +29,17 @@ namespace GLDiary
             dataGridViewViewVisiting.DataSource = database.DataTable;
             dataGridViewViewVisiting.Show();
         }
+
+        private void buttonQuitToMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            MenuForm menuForm = new MenuForm();
+            menuForm.Show();
+        }
+
+        private void dataGridViewViewVisiting_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewViewVisiting.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
     }
 }

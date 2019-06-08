@@ -21,6 +21,7 @@ namespace GLDiary
             InitializeComponent();
             database = new Database();
             database.LoadData("Students","ID","Name");
+
         }
 
         private void buttonQuitToMenu_Click(object sender, EventArgs e)
@@ -38,6 +39,8 @@ namespace GLDiary
             dataGridViewCheckBoxColumn.Name = "IsAbsent";
             dataGridViewVisiting.Columns.Add(dataGridViewCheckBoxColumn);
             foreach (DataGridViewRow dgvr in dataGridViewVisiting.Rows) dgvr.Cells[2].Value = false;
+            dataGridViewVisiting.Columns[0].ReadOnly = true;
+            dataGridViewVisiting.Columns[1].ReadOnly = true;
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)

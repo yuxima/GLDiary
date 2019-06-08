@@ -94,12 +94,13 @@
             // 
             this.comboBoxSelectPair.BackColor = System.Drawing.Color.LightSteelBlue;
             this.comboBoxSelectPair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxSelectPair.ForeColor = System.Drawing.Color.Transparent;
+            this.comboBoxSelectPair.ForeColor = System.Drawing.Color.Black;
             this.comboBoxSelectPair.FormattingEnabled = true;
             this.comboBoxSelectPair.Location = new System.Drawing.Point(492, 201);
             this.comboBoxSelectPair.Name = "comboBoxSelectPair";
             this.comboBoxSelectPair.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSelectPair.TabIndex = 4;
+            this.comboBoxSelectPair.UseWaitCursor = true;
             // 
             // VisitingForm
             // 

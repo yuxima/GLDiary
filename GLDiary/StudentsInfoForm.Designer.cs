@@ -34,20 +34,22 @@
             this.labelName = new System.Windows.Forms.Label();
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelPhoneNumber = new System.Windows.Forms.Label();
-            this.textBoxBirthDate = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.buttonQuitToMenu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.maskedTextBoxBirthDate = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxPhoneNumber = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewStudents
             // 
+            this.dataGridViewStudents.AllowUserToAddRows = false;
+            this.dataGridViewStudents.AllowUserToDeleteRows = false;
             this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewStudents.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewStudents.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -61,10 +63,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewStudents.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewStudents.Location = new System.Drawing.Point(39, 12);
+            this.dataGridViewStudents.MultiSelect = false;
             this.dataGridViewStudents.Name = "dataGridViewStudents";
             this.dataGridViewStudents.Size = new System.Drawing.Size(384, 320);
             this.dataGridViewStudents.TabIndex = 0;
+            this.dataGridViewStudents.UseWaitCursor = true;
             this.dataGridViewStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellClick);
+            this.dataGridViewStudents.SelectionChanged += new System.EventHandler(this.dataGridViewStudents_SelectionChanged);
             // 
             // labelName
             // 
@@ -90,20 +95,11 @@
             // 
             this.labelPhoneNumber.AutoSize = true;
             this.labelPhoneNumber.BackColor = System.Drawing.Color.Transparent;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(429, 133);
+            this.labelPhoneNumber.Location = new System.Drawing.Point(429, 128);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
             this.labelPhoneNumber.Size = new System.Drawing.Size(76, 13);
             this.labelPhoneNumber.TabIndex = 4;
             this.labelPhoneNumber.Text = "Phone number";
-            // 
-            // textBoxBirthDate
-            // 
-            this.textBoxBirthDate.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.textBoxBirthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxBirthDate.Location = new System.Drawing.Point(520, 92);
-            this.textBoxBirthDate.Name = "textBoxBirthDate";
-            this.textBoxBirthDate.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBirthDate.TabIndex = 6;
             // 
             // textBoxName
             // 
@@ -113,15 +109,6 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 7;
-            // 
-            // textBoxPhoneNumber
-            // 
-            this.textBoxPhoneNumber.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.textBoxPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(520, 126);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPhoneNumber.TabIndex = 8;
             // 
             // buttonAdd
             // 
@@ -188,6 +175,27 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "ID";
             // 
+            // maskedTextBoxBirthDate
+            // 
+            this.maskedTextBoxBirthDate.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.maskedTextBoxBirthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maskedTextBoxBirthDate.Location = new System.Drawing.Point(520, 92);
+            this.maskedTextBoxBirthDate.Mask = "00/00/0000";
+            this.maskedTextBoxBirthDate.Name = "maskedTextBoxBirthDate";
+            this.maskedTextBoxBirthDate.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxBirthDate.TabIndex = 15;
+            this.maskedTextBoxBirthDate.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBoxPhoneNumber
+            // 
+            this.maskedTextBoxPhoneNumber.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.maskedTextBoxPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maskedTextBoxPhoneNumber.Location = new System.Drawing.Point(520, 126);
+            this.maskedTextBoxPhoneNumber.Mask = "(999) 000-0000";
+            this.maskedTextBoxPhoneNumber.Name = "maskedTextBoxPhoneNumber";
+            this.maskedTextBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxPhoneNumber.TabIndex = 16;
+            // 
             // StudentsInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,15 +204,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(647, 347);
+            this.Controls.Add(this.maskedTextBoxPhoneNumber);
+            this.Controls.Add(this.maskedTextBoxBirthDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonQuitToMenu);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.textBoxPhoneNumber);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.textBoxBirthDate);
             this.Controls.Add(this.labelPhoneNumber);
             this.Controls.Add(this.labelBirthDate);
             this.Controls.Add(this.labelName);
@@ -225,14 +233,14 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelBirthDate;
         private System.Windows.Forms.Label labelPhoneNumber;
-        private System.Windows.Forms.TextBox textBoxBirthDate;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Button buttonQuitToMenu;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxBirthDate;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPhoneNumber;
     }
 }

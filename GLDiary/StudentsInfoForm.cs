@@ -21,11 +21,21 @@ namespace GLDiary
             database = new Database();
             database.SetConnection();
             database.LoadData("Students", "*");
+            for (int i = 0; i < dataGridViewStudents.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridViewStudents.ColumnCount; j++)
+                {
+                    if (Convert.ToString(dataGridViewStudents.Rows[i].Cells[j].Value) != "")
+                    {
+                        dataGridViewStudents.Rows[i].Cells[j].ReadOnly = true;
+                    }
+                }
+            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            database.InsertData("Students","Name","BirthDate", "PhoneNumber", textBoxName.Text, textBoxBirthDate.Text, textBoxPhoneNumber.Text);
+            database.InsertData("Students","Name","BirthDate", "PhoneNumber", textBoxName.Text, maskedTextBoxBirthDate.Text, maskedTextBoxPhoneNumber.Text);
             database.LoadData("Students","*");
             dataGridViewStudents.DataSource = database.DataTable;
         }
@@ -41,14 +51,15 @@ namespace GLDiary
         {
             textBoxID.Text = dataGridViewStudents.SelectedRows[0].Cells[0].Value.ToString();
             textBoxName.Text = dataGridViewStudents.SelectedRows[0].Cells[1].Value.ToString();
-            textBoxBirthDate.Text = dataGridViewStudents.SelectedRows[0].Cells[2].Value.ToString();
-            textBoxPhoneNumber.Text = dataGridViewStudents.SelectedRows[0].Cells[3].Value.ToString();
+            maskedTextBoxBirthDate.Text = dataGridViewStudents.SelectedRows[0].Cells[2].Value.ToString();
+            maskedTextBoxPhoneNumber.Text = dataGridViewStudents.SelectedRows[0].Cells[3].Value.ToString();
+            dataGridViewStudents.CellClick += null;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             database.UpdateStudents("Students", Convert.ToInt32(textBoxID.Text), "Name", textBoxName.Text, "BirthDate",
-                textBoxBirthDate.Text, "PhoneNumber", textBoxPhoneNumber.Text);
+                maskedTextBoxBirthDate.Text, "PhoneNumber", maskedTextBoxPhoneNumber.Text);
             database.LoadData("Students", "*");
             dataGridViewStudents.DataSource = database.DataTable;
         }
@@ -64,5 +75,11 @@ namespace GLDiary
         {
             dataGridViewStudents.DataSource = database.DataTable;
         }
+
+        private void dataGridViewStudents_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+        
     }
 }

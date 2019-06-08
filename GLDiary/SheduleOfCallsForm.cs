@@ -20,6 +20,7 @@ namespace GLDiary
             InitializeComponent();
 
             databaseCalls.LoadData("SheduleOfCalls", "*");
+            dataGridViewSheduleOfCalls.ReadOnly = true;
         }
 
         private void buttonQuitToMenu_Click(object sender, EventArgs e)
