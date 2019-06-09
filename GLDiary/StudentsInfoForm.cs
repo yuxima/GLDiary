@@ -21,16 +21,6 @@ namespace GLDiary
             database = new Database();
             database.SetConnection();
             database.LoadData("Students", "*");
-            for (int i = 0; i < dataGridViewStudents.RowCount; i++)
-            {
-                for (int j = 0; j < dataGridViewStudents.ColumnCount; j++)
-                {
-                    if (Convert.ToString(dataGridViewStudents.Rows[i].Cells[j].Value) != "")
-                    {
-                        dataGridViewStudents.Rows[i].Cells[j].ReadOnly = true;
-                    }
-                }
-            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -74,12 +64,18 @@ namespace GLDiary
         private void Form2_Load(object sender, EventArgs e)
         {
             dataGridViewStudents.DataSource = database.DataTable;
+            dataGridViewStudents.ReadOnly = true;
+            textBoxID.ReadOnly = true;
         }
 
         private void dataGridViewStudents_SelectionChanged(object sender, EventArgs e)
         {
             dataGridViewStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        
+
+        private void StudentsInfoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

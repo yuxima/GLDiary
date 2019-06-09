@@ -57,8 +57,6 @@ namespace GLDiary
         private void buttonInfo_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Click a button 'Check visiting' to mark absent students. A button 'Information about students' is used to change student`s personal data.");
-
-
         }
 
         private void buttonViewVisiting_Click(object sender, EventArgs e)

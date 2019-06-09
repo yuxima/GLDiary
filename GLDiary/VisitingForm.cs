@@ -45,35 +45,49 @@ namespace GLDiary
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            Dictionary<int, int> absent = new Dictionary<int, int>();
-            DataGridViewCheckBoxCell oCell = new DataGridViewCheckBoxCell();
-            foreach (DataGridViewRow row in dataGridViewVisiting.Rows)
+            try
             {
-                oCell = row.Cells[2] as DataGridViewCheckBoxCell;
-                var bChecked = null != oCell && null != oCell.Value && true == (bool) oCell.Value;
-                if (true == bChecked) absent.Add(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[2].Value));
+                Dictionary<int, int> absent = new Dictionary<int, int>();
+                DataGridViewCheckBoxCell oCell = new DataGridViewCheckBoxCell();
+                foreach (DataGridViewRow row in dataGridViewVisiting.Rows)
+                {
+                    oCell = row.Cells[2] as DataGridViewCheckBoxCell;
+                    var bChecked = null != oCell && null != oCell.Value && true == (bool)oCell.Value;
+                    if (true == bChecked) absent.Add(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[2].Value));
 
+                }
+                foreach (KeyValuePair<int, int> student in absent)
+                {
+                    database.SelectDay(comboBoxSelectPair.SelectedValue.ToString(), selectedDate.Date.ToString());
+                    database.UpdateStudents(comboBoxSelectPair.SelectedValue.ToString(), student.Key, selectedDate.Date.ToString(), student.Value.ToString());
+                }
+                MessageBox.Show("OK");
             }
-            foreach (KeyValuePair<int,int> student in absent) 
+            catch
             {
-                database.SelectDay(comboBoxSelectPair.SelectedValue.ToString(), selectedDate.Date.ToString());
-                database.UpdateStudents(comboBoxSelectPair.SelectedValue.ToString(), student.Key, selectedDate.Date.ToString(), student.Value.ToString());
+                MessageBox.Show("You have already marked absent students");
             }
-            MessageBox.Show("OK");
   
         }
 
         public void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            
-            selectedDate = monthCalendar.SelectionEnd;
-            subject.SheduleOfDay(selectedDate.DayOfWeek.ToString());
-            List<string> pairs = new List<string>();
-            foreach (var row in subject.DataTable.Select())
+
+            try
             {
-                pairs.Add(row.ItemArray[1].ToString());
+                selectedDate = monthCalendar.SelectionEnd;
+                subject.SheduleOfDay(selectedDate.DayOfWeek.ToString());
+                List<string> pairs = new List<string>();
+                foreach (var row in subject.DataTable.Select())
+                {
+                    pairs.Add(row.ItemArray[1].ToString());
+                }
+                comboBoxSelectPair.DataSource = pairs;
             }
-            comboBoxSelectPair.DataSource = pairs;
+            catch
+            {
+                MessageBox.Show("Error");
+            }
         }
     }
 }

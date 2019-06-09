@@ -107,6 +107,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(234, 52);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
@@ -115,7 +116,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.UseWaitCursor = true;
             // 
             // toolTip1
             // 
@@ -126,6 +126,7 @@
             this.buttonInfo.BackColor = System.Drawing.Color.Transparent;
             this.buttonInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonInfo.BackgroundImage")));
             this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonInfo.Cursor = System.Windows.Forms.Cursors.Help;
             this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonInfo.ForeColor = System.Drawing.Color.Black;
             this.buttonInfo.Location = new System.Drawing.Point(750, 12);
@@ -173,6 +174,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GLDiary";
             this.toolTip1.SetToolTip(this, "Click for checking visited students");
+
             this.Load += new System.EventHandler(this.MenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -67,7 +67,6 @@
             this.dataGridViewStudents.Name = "dataGridViewStudents";
             this.dataGridViewStudents.Size = new System.Drawing.Size(384, 320);
             this.dataGridViewStudents.TabIndex = 0;
-            this.dataGridViewStudents.UseWaitCursor = true;
             this.dataGridViewStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellClick);
             this.dataGridViewStudents.SelectionChanged += new System.EventHandler(this.dataGridViewStudents_SelectionChanged);
             // 
@@ -220,6 +219,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentsInfoForm";
             this.Text = "GLDiary - Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudentsInfoForm_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
             this.ResumeLayout(false);

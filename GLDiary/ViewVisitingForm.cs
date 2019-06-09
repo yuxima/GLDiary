@@ -25,7 +25,7 @@ namespace GLDiary
 
         private void buttonViewVisiting_Click(object sender, EventArgs e)
         {
-            database.LoadData(textBoxChooseSubject.Text, "*");
+            database.LoadData(comboBoxSelectedSubject.Text, "*");
             dataGridViewViewVisiting.DataSource = database.DataTable;
             dataGridViewViewVisiting.Show();
         }
